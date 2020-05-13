@@ -5,12 +5,22 @@
 require 'pry'
   
 class EmailAddressParser 
-    attr_accessor :name, :csv_emails
+   
+  # getter and setter attributes name and emails (name neccessary?)
+  
+  attr_accessor :name, :csv_emails
     
+   # initialize method that takes argument of emails string 
+
     def initialize(csv_emails)
       @name = name
       @csv_emails = csv_emails
     end 
+
+    # parse method separate (.split) and gather (enumerable? .collect) through 
+    # the emails |address|, 
+    # separate values by their commas(split (',')).
+    # into a single array, no duplicates (flatten)
   
     def parse 
       csv_emails.split.collect do |address|
@@ -20,11 +30,3 @@ class EmailAddressParser
       .flatten.uniq 
     end 
 end 
-  
-#   emails1 = "asd@qw.com, per@er.org, Zaza@sugar.net"
-#   parser1 = EmailAddressParser.new(emails1)
-#   parser1.parse 
-  
-#   emails2 = "asd@qw.com per@er.org per@er.org Zaza@sugar.net"
-#   parser2 = EmailParser.new(emails2)
-#   parser2.parse
